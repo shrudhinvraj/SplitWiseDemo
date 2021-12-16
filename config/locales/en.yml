@@ -60,3 +60,6 @@ en:
   transactions: 'Transactions'
   total_you_owe: 'Total you owe'
   total_due: 'Total due'
+  enter_email: 'Enter email'
+  enter_password: 'Enter password'
+  re_enter_password: 'Re enter password'
