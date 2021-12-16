@@ -1,0 +1,60 @@
+div.expense_form.container.main-areafloating
+  .title
+    h1.top-bar-title =t('add_expense')
+  = form_for @expense do |f|
+    .form-group.container-md.form-box
+      .form-items
+        = f.text_field :name, class: 'form-control', placeholder: t('enter_name')
+      .form-items
+        = f.text_field :description, class: 'form-control', placeholder: t('enter_description')
+      .form-items
+        = f.text_field  :amount, class: 'form-control', placeholder: t('enter_amount')
+      .paid_by
+        = label :paid_by_user, t('is_paid_by_you'), class: 'form-check-label'
+        = f.check_box :is_paid_by_me, checked: 'checked', class: 'form-check-input'
+      .select_paid_by  
+        = f.label :paid_by_id, class: 'form-check-label'
+        = f.select :paid_by_id, @user_list.pluck(:name, :id)
+      .select_users
+        label=t('select_users_to_share') 
+      .border.border-dark.friend_list
+         - (Array(current_user) + @user_list).each_with_index do |user, index|
+          =f.fields_for :shared_expenses do |shared_expense|
+            = render 'shared_expense_fields', f: shared_expense, user: user, index: index
+      .form-items.create-button
+        = f.submit t('create_expense'), class: 'btn btn-success submit-button'
+
+
+  javascript:
+
+    $( document ).ready(function() {
+        toggle_paid_by_select()
+    });
+
+    $('#expense_paid_by_id').change(function(){
+      toggle_paid_by_select()
+    })
+
+    $('#expense_is_paid_by_me').click(function(){
+      toggle_paid_by_select();
+    });
+
+    function toggle_paid_by_select(){
+      $('.shared_user_list').show()
+      if ($('#expense_is_paid_by_me').is(':checked')){
+        $('.select_paid_by').hide()
+        shared_user_div = $('#shared_user_'+#{raw current_user.id})
+        shared_user_div.children(':last').val(false)
+        shared_user_div.hide()
+      }
+      else{
+        $('.select_paid_by').show()
+        shared_user_div = $('#shared_user_'+$('#expense_paid_by_id').val())
+        shared_user_div.children(':last').val(false)
+        shared_user_div.hide()
+      }
+    }
+
+    $('.shared_select').click(function(){
+      $(this).parent().children(':last').val(!$(this).is(':checked'))
+    })

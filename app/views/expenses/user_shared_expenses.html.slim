@@ -1,0 +1,9 @@
+.transaction_list
+    = "total due: #{@shared_expense_data.collect(&:total_due).sum}"
+    - @shared_expense_data.each do |expense|
+        p
+            =expense.name
+        p
+            =expense.total_due
+        p
+            =expense.created_at.strftime("%Y-%m-%d")

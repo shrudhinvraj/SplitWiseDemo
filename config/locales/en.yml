@@ -31,3 +31,32 @@
 
 en:
   hello: "Hello world"
+  splitwise: 'Splitwise'
+  expense_created_successfully: 'Expense created successfully'
+  is_paid_by_you: 'Is paid by you?'
+  create_expense: 'Create expense'
+  enter_name: 'Enter a name'
+  enter_description: 'Enter a description'
+  enter_amount: 'Enter amount'
+  activerecord:
+    errors:
+      models:
+        expense: 
+          attributes: 
+            base:
+              atleast_one_user: 'Atleast one user should be added for sharing the expense'
+  add_expense: 'Add an expense'
+  indian_rupee: '₹'
+  paid_text: '%{name} paid'
+  borrowed_text: 'You borrowed'
+  lent_text: 'You lent'
+  select_users_to_share: 'Select users to share the expense'
+  settle_up: 'Settle up'
+  make_settlement: 'Make settlement'
+  enter_settlement_name: 'Enter settlement name'
+  settlment_created_successfully: 'Settlement created successfully'
+  settlement_text: "%{paid_by} paid to %{paid_to}"      
+  settlements: 'Settlements'
+  transactions: 'Transactions'
+  total_you_owe: 'Total you owe'
+  total_due: 'Total due'

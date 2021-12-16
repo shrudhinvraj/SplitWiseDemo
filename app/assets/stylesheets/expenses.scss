@@ -1,0 +1,67 @@
+// Place all the styles related to the expenses controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.select_paid_by{
+    display: none;
+}
+
+.shared_user_list{
+    width: 300px;
+    float: left;
+    input{
+        float: left;
+    }
+    label{
+        float: left;
+    }
+}
+
+.form-box{
+    width: 500px;
+    margin-left: 300px;
+}
+
+.form-items{
+    margin-bottom: 10px;
+}
+
+.title{
+    margin-top: 50px;
+    text-align: center;
+    padding: 20px;
+}
+
+.create-button{
+    float: left;
+}
+
+label{
+    min-width: 150px;
+    max-width: 250px;
+}
+
+.paid_by{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.friend_list{
+    height: 300px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.shared_user_list input{
+    width: 50px;
+}
+
+.settlement-list {
+    border-bottom: 1px solid #e8e8e8;;
+}
+
+.sub-title{
+    margin-left: 10px;
+    h4{
+        font-weight: bold;
+    }
+}

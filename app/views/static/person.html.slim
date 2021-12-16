@@ -2,48 +2,45 @@
   aside.side-bar-area
     .friends-list
       p.friends-list-header FRIENDS
-      a.friend-name anbu
-      a.friend-name barath
+      =render partial: "friend", collection: @shared_expense_data[:friends_list], as: :friend
   .main-area
-    .top-bar
-      h1.top-bar-title Dashboard
-      .top-bar-actions
-        button.btn.btn-primary type="button"  Add an expense
-        button.btn.btn-secondary type="button"  Settle up
-    .expenses-list
-      .expense-item
-        .item-lhs
-          p SEP 30
-          p Hello
-        .item-rhs
-          .you-details
-            p you paid
-            p $23.00
-          .you-details
-            p you lent anbu
-            p $11.50
-        button.remove-btn ❌
-      .expense-item
-        .item-lhs
-          p SEP 30
-          p Hello
-        .item-rhs
-          .you-details
-            p you paid
-            p $23.00
-          .you-details
-            p you lent anbu
-            p $11.50
-        button.remove-btn ❌
-      .expense-item
-        .item-lhs
-          p SEP 30
-          p Hello
-        .item-rhs
-          .you-details
-            p you paid
-            p $23.00
-          .you-details
-            p you lent anbu
-            p $11.50
-        button.remove-btn ❌
+    =render partial: "top_bar"
+    -if @shared_expense_data[:settlement_data].present? 
+      .expenses-list.settlement-list
+        .sub-title
+          h4 = t('settlements')
+        - @shared_expense_data[:settlement_data].each do |settlement|
+          .expense-item
+            .item-lhs
+              p 
+                =settlement.created_at.strftime("%^b %d")
+              p 
+                =settlement.name
+            .item-rhs
+              .you-details.settlement-text
+                p 
+                  =t('settlement_text', paid_by: settlement.settlement_by.name, paid_to: settlement.settlement_to.name)
+                p 
+                  ="#{t('indian_rupee')} #{settlement.amount.floor(2)}"    
+    - if @shared_expense_data[:expense_list].present?              
+      .expenses-list
+        .sub-title
+          h4 = t('transactions')
+        - @shared_expense_data[:expense_list].each do |expense|
+          .expense-item
+            .item-lhs
+              p 
+                =expense.created_at.strftime("%^b %d")
+              p 
+                =expense.name
+            .item-rhs
+              .you-details
+                p 
+                  =paid_text(expense, @shared_expense_data[:selected_friend])
+                p 
+                  ="#{t('indian_rupee')} #{expense.amount.floor(2)}"
+              .you-details
+                p
+                  =owes_text(expense)
+                p 
+                  ="#{t('indian_rupee')} #{expense.balance.floor(2)}"

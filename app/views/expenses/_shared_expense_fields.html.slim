@@ -1,0 +1,5 @@
+.shared_user_list id="shared_user_#{user.id}"
+    = check_box_tag "shared_expenses_attributes[#{index}][selected]", '', false, class: 'shared_select'
+    = label '', user.name
+    = f.hidden_field :user_id, value: user.id
+    = f.hidden_field :_destroy, value: true, class: 'destroy_shared_expense'

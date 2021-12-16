@@ -179,6 +179,7 @@
 
 .item-rhs .you-details {
   text-align: center;
+  width: 120px;
 }
 
 .item-rhs .you-details:nth-child(2) {
@@ -198,3 +199,12 @@
   margin: 0;
 }
 /* Custom dashboard styles ends */
+
+.friends-list, .detail-block{
+  height: 300px;
+  overflow: scroll;
+}
+
+.settlement-text{
+  width: 300px !important;
+}

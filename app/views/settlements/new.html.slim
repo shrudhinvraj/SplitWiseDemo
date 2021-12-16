@@ -1,0 +1,14 @@
+div.settlement_form.container.main-areafloating
+  .title
+    h1.top-bar-title =t('make_settlement')
+  = form_for @settlement do |f|
+    .form-group.container-md.form-box
+      .form-items
+        = f.text_field :name, class: 'form-control', placeholder: t('enter_settlement_name')
+      .form-items
+        = f.text_field  :amount, class: 'form-control', placeholder: t('enter_amount')
+      .select_settlement_to
+        = f.label :settlement_to, class: 'form-check-label'
+        = f.select :settlement_to_id, @user_list.pluck(:name, :id)
+      .form-items.create-button
+        = f.submit t('make_settlement'), class: 'btn btn-success submit-button'
